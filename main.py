@@ -11,10 +11,9 @@ def active_window_process_name():
         return(psutil.Process(pid[-1]).name())
     except:
         pass
-async def askBing(activeWindow):
+async def askBing(activeWindow,question):
     print("Enter question:\n")
     activeWindow = activeWindow.replace(".exe","")
-    question = input()
     print("Software is: " + activeWindow)
     bot = await Chatbot.create() # Passing cookies is "optional", as explained above
     request = "Software being used: " + activeWindow + ". " + "My question is: " + question

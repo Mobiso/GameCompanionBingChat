@@ -13,19 +13,26 @@ def ask():
         response = asyncio.run(askBing.askBing(software, question))
         for key in response:
             if key == "text":
-                print(response[key])
+                T.insert(tk.END, response[key])
 
 
+def close():
+    master.destroy()
 
 
-
-keyboard.wait("k")
-software = activeWindow.active_window_process_name()
-master = tk.Tk()
-master.title("Ask Bing!")
-tk.Label(master, text="Question").grid(row=0)
-e1 = tk.Entry(master)
-b1 = tk.Button(master, text="Ask!", command=ask)
-e1.grid(row=0, column=1)
-b1.grid(row=1, column=0)
-master.mainloop()
+programRunning = True
+while programRunning:
+    keyboard.wait("k")
+    software = activeWindow.active_window_process_name()
+    master = tk.Tk()
+    master.title("Ask Bing!")
+    tk.Label(master, text="Question").grid(row=0)
+    e1 = tk.Entry(master)
+    b1 = tk.Button(master, text="Ask!", command=ask)
+    b2 = tk.Button(master, text="Quit", command=close)
+    T = tk.Text(master, height=10, width=60)
+    T.grid(row=2, column=0)
+    e1.grid(row=0, column=1)
+    b1.grid(row=1, column=0)
+    b2.grid(row=1, column=1)
+    master.mainloop()

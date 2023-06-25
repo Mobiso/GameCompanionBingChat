@@ -27,9 +27,11 @@ def answerWindow(response, question):
     tk.Label(answerWindow, text="Answer:").grid(row=1, columnspan=2)
     tQuestion = tk.Text(answerWindow, height=1, width=40)
     tQuestion.grid(row=0, column=0,columnspan=2)
-    tAnswer = tk.Text(answerWindow, height=40, width=100)
+    tAnswer = tk.Text(answerWindow, height=40, width=100,wrap=WORD)
     tAnswer.grid(row=1, rowspan=2)
     tQuestion.insert(tk.END, question)
+    response = response.replace("**","\"")
+
     tAnswer.insert(tk.END, response)
     answerWindow.mainloop()
 
